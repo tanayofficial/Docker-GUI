@@ -1,0 +1,97 @@
+<script>
+                function printImageId()
+        {
+
+            var os_name = document.getElementById("os").value;
+            var image_name = document.getElementById("im").value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("imageId").innerHTML =this.responseText;
+            }
+
+   xhttp.open("GET", "http://43.205.120.237:999/run?os_name=" + os_name + "&image_name=" + image_name);
+            xhttp.send();
+
+        }
+
+        function printlst()
+        {
+                const myhttp=new XMLHttpRequest();
+                myhttp.onload = function () {
+                        document.getElementById("listContainer").innerHTML=this.responseText;
+                }
+                myhttp.open("GET", "http://43.205.120.237:999/list");
+                myhttp.send();
+        }
+       function remove()
+        {
+                var osid=document.getElementById("del").value;
+                const myhttp=new XMLHttpRequest();
+                myhttp.onload = function () {
+                        document.getElementById("imageId").innerHTML=this.responseText;
+                }
+                myhttp.open("GET", "http://43.205.120.237:999/rm?del_os="+osid);
+                myhttp.send();
+        }
+
+</script>
+
+
+<style>
+#manage_container{
+        border:2px solid blue;
+        position: absolute;
+        left:0%;
+        width:32%;
+        height:100%;
+}
+
+#manage_images{
+        border:2px solid green;
+        position:absolute;
+        left:34%;
+        width:32%;
+        height:100%;
+}
+
+#info_stats{
+        border:2px solid red;
+        position: absolute;
+        left:68%;
+        width:32%;
+        height:100%;
+}
+</style>
+
+
+<div id="manage_container">
+<div align="center">Manage Containers</div>
+Name of Os:<input id="os" name="os_name"></br>
+Name of Image:
+        <select id="im" name="image_name">
+                <option>centos</option>
+                <option>ubuntu</option>
+        </select>
+</br>
+<button onclick="printImageId()">Click to launch</button>
+</br>
+</br>
+<button onclick="printlst()">List the Container</button>
+</br>
+</br>
+</br>
+Delete OS:<input id="del" name="del_os" placeholder="Enter ID/name"></br>
+<button onclick="remove()">Delete the Conntainer</button>
+
+<div id="imageId"></div>
+<div id="listContainer"></div>
+</div>
+
+<div id="manage_images">
+<div align="center">Manage Images</div>
+</div>
+
+<div id="info_stats">
+<div align="center">Information and Stats</div>
+</div>
+

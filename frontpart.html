@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <link rel="stylesheet" type="text/CSS" href="frontPart.css">
+    <script>
+        <script>
+                function printImageId()
+        {
+
+            var os_name = document.getElementById("os").value;
+            var image_name = document.getElementById("im").value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("imageId").innerHTML =this.responseText;
+            }
+
+   xhttp.open("GET", "http://43.205.120.237:999/run?os_name=" + os_name + "&image_name=" + image_name);
+            xhttp.send();
+
+        }
+
+        function printlst()
+        {
+                const myhttp=new XMLHttpRequest();
+                myhttp.onload = function () {
+                        document.getElementById("listContainer").innerHTML=this.responseText;
+                }
+                myhttp.open("GET", "http://43.205.120.237:999/list");
+                myhttp.send();
+        }
+       function remove()
+        {
+                var osid=document.getElementById("del").value;
+                const myhttp=new XMLHttpRequest();
+                myhttp.onload = function () {
+                        document.getElementById("imageId").innerHTML=this.responseText;
+                }
+                myhttp.open("GET", "http://43.205.120.237:999/rm?del_os="+osid);
+                myhttp.send();
+        }
+
+</script>
+   
+
+
+</head>
+<body>
+
+<section class="bigContainer">
+   
+    <section class="head">  
+        
+        <div class="s1">
+
+                           <div class="image1"></div> 
+                           <div class="H1">
+                            <h1>OUR DOCKER CONTAINER</h1>
+                        
+                            </div> 
+        </div>                  
+                           
+                           
+    </section><br/><br/>
+
+
+       
+<section class="bigcontainer"><!-------it contain all three ccontainers----------->
+
+    <div id="manage_container" class="contain"><h1 class="con1">Manage Containers</h1><hr width="90%"/>
+    
+             <div class="subcontainer"><!------it contain all elements like button -------------->
+    
+                    
+                    <div class="d1">
+                           <label class="label "> Name of Os:</label>
+                           <input id="os" name="os_name"></br>
+                    </div>
+    
+                    <div class="d2">
+                           <label class="label">Name of Image:</label>
+                           <select id="im" name="image_name">
+                       
+                                                <option value="v1">Amazon Linux</option>
+                                                 <option value="v2">Ubuntu LTS</option>
+                                                 <option value="v3">CentOS</option>
+                                                 <option value="v4"> Red Hat Enterprise Linux</option>
+                                                 <option value="v4">Debian</option>
+                                                 <option value="v4">Elementary OS</option>
+                                                 <option value="v4">Fedora Linux</option>
+                                                 <option value="v4">Gentoo Linux</option>
+                                                 <option value="v4">Kali Linux</option>
+                                                 <option value="v4">Linux Lite</option>
+                                                 <option value="v4">Linux Mint</option>
+                             </select>
+                    </div> 
+          
+            </br>
+    
+    <div class="d3">
+            <div class="d5"><label class="label "> To Launch OS click here: </label></div>
+            <div class="d5"> <button onclick="printImageId()"  class="button d6">launch</button></br></br></div>
+    </div> <hr width="90%"/>    
+            
+            <label class="label d5">Click here to See the container List:</label>
+            <a href="listcon.html"><button onclick="printlst()"  class="button d5" > Container list </button></a></br></br><hr width="90%"/>
+    
+            
+            <div class="d5 d"><label class="label"> To delete OS:</label>
+            <input id="del" name="del_os" placeholder="Enter ID/name"></div></br>
+    
+            <div class="d5"><label class="label "> To Delete the container click here: </label></div>
+            <div class="d5 rem"><button onclick="remove()"   class="button" >Delete container</button></div>
+    
+            </div><!--------------end of subcontainer----------------------------------------------->
+    
+    
+            <!--------- </section>----------end of container-------------------------------------------------------->
+    
+    </div><!------end of container1----------------------------------------------------------------->
+    
+            <div id="imageId"></div>
+                    
+            <div id="listContainer"></div>
+            
+            
+    
+    
+            
+            <div id="manage_images"  class="contain" >  <h1 class="con2">Manage Images</h1><hr width="70%"/>   </div>
+    
+            <div id="info_stats"  class="contain">   <h1 class="con3">Information and Status</h1><hr width="70%"/>  </div>
+    
+                           
+           
+            
+    
+            
+    
+    </section> <!-----------end of bidcontainer------------------------------------------------------------>
+
+   
+    
+
+   
+<div class="head2">
+    <a class="link" href="listcon.html"><h2 class="">container list </h2><br/></a>
+    <hr width="80%"/>
+</div>
+
+</section>
+    
+
+</body>
+</html>
